@@ -15,9 +15,12 @@ public class IndexResource {
     @Inject
     Template index;
 
+    @ConfigProperty(name = "demo.env.value")
+    String demoValue;
+
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String get() {
-        return index.render();
+    public TemplateInstance get() {
+        return index.data("demoValue", demoValue).render();
     }
 }
