@@ -21,6 +21,6 @@ public class IndexResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public TemplateInstance get() {
-        return index.data("demoValue", demoValue).render();
+        return index.data("demoValue", demoValue);
     }
 }
