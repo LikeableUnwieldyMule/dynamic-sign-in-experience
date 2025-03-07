@@ -28,8 +28,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -f src/main/docker/Dockerfile.jvm -t containerregistryforsamltestingforentraregistry.azurecr.io/quarkus-saml-test:latest .
+        docker build -f src/main/docker/Dockerfile.jvm -t containerregistryforsamltestingforentraregistry.azurecr.io/dynamic-sign-in-experience:latest .
 
     - name: Push Docker image to Azure Container Registry
       run: |
-        docker push containerregistryforsamltestingforentraregistry.azurecr.io/quarkus-saml-test:latest
+        docker push containerregistryforsamltestingforentraregistry.azurecr.io/dynamic-sign-in-experience:latest

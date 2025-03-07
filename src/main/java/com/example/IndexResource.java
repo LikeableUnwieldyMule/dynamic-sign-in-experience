@@ -1,3 +1,5 @@
+package com.example;
+
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
 import jakarta.inject.Inject;
@@ -13,12 +15,9 @@ public class IndexResource {
     @Inject
     Template index;
 
-    @ConfigProperty(name = "saml.idpUrl")
-    String idpUrl;
-
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String get() {
-        return index.data("samlIdpUrl", idpUrl).render();
+        return index.render();
     }
 }
