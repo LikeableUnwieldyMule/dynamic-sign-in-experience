@@ -1,25 +1,41 @@
 package com.example;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
-import java.util.Map;
-
-@Path("/.well-known/openid-configuration")
 public class OIDCDiscovery {
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Map<String, Object> getConfig() {
-        return Map.of(
-            "issuer", "https://your-domain.com",
-            "authorization_endpoint", "https://your-domain.com/authorize",
-            "token_endpoint", "https://your-domain.com/token",
-            "jwks_uri", "https://your-domain.com/jwks.json",
-            "response_types_supported", new String[]{"code"},
-            "subject_types_supported", new String[]{"public"},
-            "token_endpoint_auth_methods_supported", new String[]{"client_secret_post", "client_secret_jwt", "private_key_jwt"}
-        );
+    public String issuer;
+
+    @JsonProperty("authorization_endpoint")
+    public String authorizationEndpoint;
+
+    @JsonProperty("token_endpoint")
+    public String tokenEndpoint;
+
+    @JsonProperty("jwks_uri")
+    public String jwksUri;
+
+    @JsonProperty("response_types_supported")
+    public List<String> responseTypesSupported;
+
+    @JsonProperty("subject_types_supported")
+    public List<String> subjectTypesSupported;
+
+    @JsonProperty("token_endpoint_auth_methods_supported")
+    public List<String> tokenEndpointAuthMethodsSupported;
+
+    // Constructor
+    public OIDCDiscovery() {}
+
+    public OIDCDiscovery(String issuer, String authorizationEndpoint, String tokenEndpoint, String jwksUri,
+                         List<String> responseTypesSupported, List<String> subjectTypesSupported,
+                         List<String> tokenEndpointAuthMethodsSupported) {
+        this.issuer = issuer;
+        this.authorizationEndpoint = authorizationEndpoint;
+        this.tokenEndpoint = tokenEndpoint;
+        this.jwksUri = jwksUri;
+        this.responseTypesSupported = responseTypesSupported;
+        this.subjectTypesSupported = subjectTypesSupported;
+        this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
     }
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OIDC Authorization Request</title>
+</head>
+<body>
+    <h1>OIDC Authorization Request</h1>
+    <ul>
+        {#for entry in queryParams}
+            <li><strong>{entry.key}:</strong> {entry.value}</li>
+        {/for}
+    </ul>
+</body>
+</html>
